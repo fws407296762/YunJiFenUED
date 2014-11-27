@@ -520,6 +520,8 @@
 				$(obj).val(objVal.replace(rule, ""));
 			}, 10);
 		}
+		
+		function order
 	</script>
 
 </html>
