@@ -102,7 +102,7 @@
 								<div id="extension_givetype_box" class=" selectbox">
 									<p class="seled" id="extension_givetype_selected" data-value="1">固定值</p>
 									<span class="sanjiao_left"></span>
-									<div class="selectlist score-type" id="score_type">
+									<div class="selectlist score-type" id="extension_score_type">
 										<p data-value="1">固定值</p>
 										<p data-value="2">随机</p>
 										<p data-value="3">递增</p>
@@ -202,7 +202,7 @@
 								<div id="part_givetype_box" class=" selectbox">
 									<p class="seled" id="part_givetype_selected" data-value="1">固定值</p>
 									<span class="sanjiao_left"></span>
-									<div class="selectlist score-type" id="score_type">
+									<div class="selectlist score-type" id="part_score_type">
 										<p data-value="1">固定值</p>
 										<p data-value="2">随机</p>
 									</div>
@@ -521,7 +521,7 @@
 			}, 10);
 		}
 		
-		function order
+		
 	</script>
 
 </html>

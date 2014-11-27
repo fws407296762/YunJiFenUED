@@ -22,27 +22,22 @@ function frequency(){
             box:$("#extension_givetype_box"),
             data:new_givetype
         });
-    }else{
-    	Interact.createOptions({
-            box:$("#extension_givetype_box"),
-            data:givetype
-        });
     }
     var score_type_v = parseInt(selectfn("givetype_selected").v,10);
         $(".set_box")[ score_type_v === 3 ? "show":"hide"]();
         $(".givefj_num_box")[score_type_v === 2 ? "show" : "hide"]();
         $(".fj_num_box")[score_type_v === 1 ? "show" : "hide"]();
-        $("#pl_selected_list").on("click","p",function(){
-            pl_v = parseInt($(this).attr("data-value"),10);
+        $("#pl_extension_list").on("click","p",function(){
+            var pl_v = parseInt($(this).attr("data-value"),10);
             $(".iplimit_box")[pl_v === 0 ? "show" : "hide"]();
             if(pl_v === 0 ||  pl_v === 1){
                 Interact.createOptions({
-                    box:$("#givetype_box"),
+                    box:$("#extension_score_type"),
                     data:new_givetype
                 });
             }else{
                 Interact.createOptions({
-                    box:$("#givetype_box"),
+                    box:$("#extension_score_type"),
                     data:givetype
                 });
             }
