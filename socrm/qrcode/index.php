@@ -203,5 +203,8 @@ $(window).resize(function(){
 </div>
 
 </body>
-<script src="/public/js/interaction.js"></script>
+<script src="/public/js/qr/jquery.mockjax.js" type="text/javascript" charset="utf-8"></script>
+<script src="/public/js/qr/jquery.mockjson.js" type="text/javascript" charset="utf-8"></script>
+<script src="/public/js/qr/qrData.js"></script>
+<script src="/public/js/qr/qrIndex.js"></script>
 </html>

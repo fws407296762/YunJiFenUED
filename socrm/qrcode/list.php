@@ -52,7 +52,7 @@
                             <p data-value="1">全部</p>
                         </div>
                     </div>
-                    <div class=" selectbox fl hide">
+                    <div id="selectUser" class=" selectbox fl hide">
                         <p class="seled" id="category_actions_selected" data-value="0">参与者</p>
                         <span class="sanjiao_left"></span>
                         <div id="category_actions_list" class="selectlist">
@@ -170,6 +170,7 @@
     <!-- footer start -->
     <?php include("/../base/footer.php") ?>
     <!-- footer end -->
+    <input type="hidden" name="" id="id" value="<?php echo $id; ?>" />
 </div>
 </body>
 <script src="/public/plugins/My97DatePickerBeta/My97DatePicker/WdatePicker.js" type="text/javascript"></script>

@@ -343,6 +343,9 @@
 				</p>
 			</div>
 		</div>
+		<input type="hidden" id="id" value="<?php echo $id; ?>" name="" />
+		<input type="hidden" id="interact_id" value="<?php echo $interact_id; ?>" name="" />
+		<input type="hidden" id="operate_type" value="<?php echo $operate_type; ?>" name="" />
 	</body>
 	<script src="/public/js/interaction.js"></script>
 </html>

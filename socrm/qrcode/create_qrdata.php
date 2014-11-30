@@ -92,7 +92,8 @@
     <?php include("/../base/footer.php") ?>
     <!-- footer end -->
 </div>
-
+<input type="hidden" name="" id="id" value="<?php echo $id; ?>" />
+<input type="hidden" name="" id="type" value="<?php echo $type; ?>" />
 </body>
 <script src="/public/js/interaction.js"></script>
 
