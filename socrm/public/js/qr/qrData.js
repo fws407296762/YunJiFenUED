@@ -134,7 +134,25 @@ var QR = {
 		});
 		return dtd;
 	},
-	
+	createQr:function(options){
+		var dtd = $.Deferred();
+		QR.ajax({
+			url:"/qrcode/createQr",
+			data:options.data,
+			beforeSend:options.beforeSend
+		}).done(function(getdata){
+			var getdata = eval("("+getdata+")"),
+				code = parseInt(getdata.code);
+			if(code){
+				dtd.reject(getdata.msg);
+				return false;
+			}
+			dtd.resolve();
+		}).fail(function(){
+			dtd.reject();
+		});
+		return dtd;
+	},
 	ajax:function(options){
 		var dtd = $.Deferred();
 		return $.ajax({
@@ -144,6 +162,9 @@ var QR = {
 			data:options.data,
 			beforeSend:options.beforeSend,
 		});
+	},
+	verifi:function(){
+		
 	}
 };
 

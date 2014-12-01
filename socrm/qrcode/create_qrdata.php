@@ -61,7 +61,7 @@
         <div class="create_activities_form">
         	<div class="caf_item clfix">
         		<span class="cafi_title">活动名称：</span>
-        		<div class="cafi_ele"><input type="text" id="activeName" class="input28" placeholder="请输入活动名称" value=""></div>
+        		<div class="cafi_ele"><input type="text" id="activeName" class="input28" placeholder="请输入活动名称" value=""><em class="remind mleft5">限16字内，名称不能重复！</em></div>
         	</div>
         	<div class="caf_item clfix">
 		    <span class="cafi_title">数据类型：</span>
@@ -86,13 +86,14 @@
         </div>
         <p class="pdtop10">
 	        <a class="bigbtn" id="nextBtn">下一步</a>
+	        <span id="createProm" class="hide"><img src="../public/images/admin/load20.gif" alt="" />正在创建...</span>
 	    </p>
     </div>
     <!-- footer start -->
     <?php include("/../base/footer.php") ?>
     <!-- footer end -->
     
-    <input type="hidden" name="" id="id" value="1" />
+    <input type="hidden" name="" id="id" value="<?php echo $id; ?>" />
 </div>
 <script src="/public/js/qr/jquery.mockjax.js" type="text/javascript" charset="utf-8"></script>
 <script src="/public/js/qr/jquery.mockjson.js" type="text/javascript" charset="utf-8"></script>

@@ -75,8 +75,6 @@
 				        <!--范围选择结束-->
 						<!--推广者规则内容设置开始-->
 						<div id="extendsionBox" class="hide">
-							
-				        	
 							<div class="h2_box pdtop15 ">
 								<h2>推广者：积分奖励规则，二维码每被参与者有效扫描一次获得积分数；</h2>
 							</div>
@@ -343,9 +341,11 @@
 				</p>
 			</div>
 		</div>
-		<input type="hidden" id="id" value="<?php echo $id; ?>" name="" />
-		<input type="hidden" id="interact_id" value="<?php echo $interact_id; ?>" name="" />
-		<input type="hidden" id="operate_type" value="<?php echo $operate_type; ?>" name="" />
+		<input type="hidden" id="id" value="1" name="" />
+		<input type="hidden" id="interact_id" value="2" name="" />
+		<input type="hidden" id="operate_type" value="1" name="" />
 	</body>
 	<script src="/public/js/interaction.js"></script>
+	<script src="/public/js/qr/qrData.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/public/js/qr/qrRule.js" type="text/javascript" charset="utf-8"></script>
 </html>
