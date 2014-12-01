@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>异常监控-积分转账-SoCRM关系管理系统</title>
+<title>码上推-已创建列表-SoCRM关系管理系统</title>
 <link href="/public/css/base.css" rel="stylesheet">
-<link href="/public/css/memberinfo.css" rel="stylesheet">
+<link href="/public/css/qrdata.css" rel="stylesheet">
 <script src="http://cdn.bootcss.com/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
 <script type="text/javascript"> if (typeof(jQuery) == 'undefined' || typeof($) == 'undefined') {document.write(unescape("%3Cscript src='/public/js/jquery-1.7.2.min.js' type='text/javascript'%3E%3C/script%3E")); } </script>
 <script src="/public/js/base.js" type="text/javascript" ></script>
@@ -54,9 +54,19 @@ $(window).resize(function(){
         <div class="h2_box pdtop15 ">
 		    <h2>码上推</h2>
 		</div>
-		<p class="pdtop10">
-	        <a class="bigbtn" href="/rules/create_interaction.php">新建</a>
+	    <p class="pdtop10">
+	        <a class="bigbtn" href="/qrcode/create?id=0">新建</a>
 	    </p>
+	    <div id="selecedRuleBox" class="mtop20">
+		当前向第三方系统订单打印系统输出二维码的规则：<em id="currentRule" class="hide"></em><a id="printRuleBtn" class="hide">设置</a>
+		<div class="select-rule selectbox hide">
+                    <p class="seled" id="ruleSelected" data-value="">请选择规则</p>
+                    <span class="sanjiao_left"></span>
+                    <div class="selectlist" id="ruleOptions"></div>
+                </div>
+		<a id="bindRuleBtn" class="petitebtn petitebtn_focus hide">确定</a><a id="cancleRuleBtn" class="hide">返回</a>
+		<a id="changeRuleBtn" class="hide">更改</a>
+	    </div>
 	    <div class="mtop20 tablelist">
 		    <table width="100%" border="0" cellspacing="0" cellpadding="0">
 		        <thead>
@@ -66,7 +76,7 @@ $(window).resize(function(){
 		                <th width="200" align="left" scope="col"><div class="pdlr10">二维码信息源类型</div></th>
 		                <th width="200" align="left" scope="col"><div class="pdlr10">积分奖励规则</div></th>
 		                <th align="left" scope="col"><div class="pdlr10">操作</div></th>
-		                <th width="150" align="left" scope="col"><div class="pdlr10">状态</div></th>
+		                <th width="200" align="left" scope="col"><div class="pdlr10">状态</div></th>
 		            </tr>
 		        </thead>
 		        <tbody id="pageContent">
@@ -134,77 +144,36 @@ $(window).resize(function(){
     </div>
 </div>
 
-<div id="create_link_box" class="popbox">
-    <div id="create_link" class="pop pop450" style="height: 175px">
+<div id="getQrcode" class="popbox">
+    <div id="getQrcodeBox" class="pop pop650">
         <div class="pop_hd">
-            <strong class="pop_title">生成链接</strong>
-            <a href="javascript:hide('create_link_box');" class="pop_hide" style="display: block;"></a>
+            <strong class="pop_title">获取活动二维码</strong>
+            <a href="javascript:hide('getQrcode');" class="pop_hide" style="display: block;"></a>
         </div>
         <div class="pop_bd">
-            <div id="create_link_con">
-                <input type="text" class="input28" style="width:397px" value="http://">
-            </div>
+            <div id="getQrcodeCont">
+		<div id="noOrderQrcode" class="hide">
+		    <span class="qrcode-img fl">
+			<img src="" id="qrcodeImg" alt="">
+		    </span>
+		    <h3 class="qrcodeact-name"></h3>
+		    <input type="text" class='input28' style="width:300px;margin-right:10px" disabled="disabled" name="" value="{{qrHref}}" id="qrcodeValue"><a class="petitebtn petitebtn_focus" id="copyLink">复制链接</a>
+		    <p class="qr-prom">温馨提示：若需要生成其它尺寸的二维码，复制以上链接前往<a href="http://cli.im/url" target="_blank">此处生成&gt;&gt;</a></p>
+		</div>
+		<div id="orderQrcode" class="hide">
+		    <p>订单相关二维码信息，请通过订单打印系统的操作规则进行处理。<a href="/qrcode/standard">点击查看&gt;&gt;</a></p>
+		</div>
+	    </div>
+	    
         </div>
-        <p id="cl_btnbox" class="" align="center">
-            <a id="copy_link" class="smallbtn">复制链接</a>
-            <img src="/public/images/load20.gif" alt="加载中" id="create_link_val" class="mleft10 hide">
-            <a href="">互动行为链接的应用场景</a>
-        </p>
     </div>
 </div>
-
-<div id="rename_box" class="popbox">
-    <div id="rename" class="pop pop450" style="height: 175px">
-        <div class="pop_hd">
-            <strong class="pop_title">重命名</strong>
-            <a href="javascript:hide('rename_box');" class="pop_hide" style="display: block;"></a>
-        </div>
-        <div class="pop_bd">
-            <div id="rename_con">
-                <label for="">名称更改为：</label><input type="text" class="input28 w170" value=""><span class="rename_error mleft10">名字已占用</span>
-                <p class="mtop10" style="padding-left: 73px">限16字内，名称不能重复！</p>
-            </div>
-        </div>
-        <p id="rename_btnbox" class="" align="center">
-            <a id="rename_btn" class="smallbtn">确定</a>
-            <img src="/public/images/load20.gif" alt="加载中" class="mleft10 hide">
-        </p>
-    </div>
-</div>
-
-<div id="bind_rule_box" class="popbox">
-    <div id="bind_rule" class="pop pop450" style="height: 200px">
-        <div class="pop_hd">
-            <strong class="pop_title">绑定规则</strong>
-            <a href="javascript:hide('bind_rule_box');" class="pop_hide" style="display: block;"></a>
-        </div>
-        <div class="pop_bd">
-            <div id="bind_rule_con">
-                <div class="clfix">
-                    <label for="" class="fl mtop5">选择要绑定的基础规则：</label>
-                    <div class="selectbox fl">
-                        <p class="seled" id="br_selected" data-value="">请选择规则</p>
-                        <span class="sanjiao_left"></span>
-                        <div class="selectlist" id="br_options"></div>
-                    </div>
-                    <div id="br_options_error" class="error"></div>
-                </div>
-                <p class="mtop10" style="padding-left: 132px"><a>规则详情</a></p>
-                <p class="mtop10" style="padding-left: 132px"><a>没有合适，新建基础规则</a></p>
-
-            </div>
-        </div>
-        <p id="bind_rule_btnbox" class="" align="center">
-            <a id="bind_rule_btn" class="smallbtn">确定</a>
-            <span class="load hide"><img src="/public/images/load20.gif" alt="加载中" class="mleft10">正在加载...</span>
-            <span class="error"></span>
-        </p>
-    </div>
-</div>
-
+<div id="d_clip_buttonBox" class="hide"><div id="d_clip_button"><a></a></div></div>
 </body>
 <script src="/public/js/qr/jquery.mockjax.js" type="text/javascript" charset="utf-8"></script>
 <script src="/public/js/qr/jquery.mockjson.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="/public/js/ZeroClipboard.js"></script>
+<script src="/public/js/interaction.js"></script>
 <script src="/public/js/qr/qrData.js"></script>
 <script src="/public/js/qr/qrIndex.js"></script>
 </html>

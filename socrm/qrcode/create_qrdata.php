@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>异常监控-积分转账-SoCRM关系管理系统</title>
+    <title>新建活动-积分转账-SoCRM关系管理系统</title>
     <link href="/public/css/base.css" rel="stylesheet">
     <link href="/public/css/qrdata.css" rel="stylesheet">
     <!--    <script src="http://cdn.bootcss.com/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>-->
@@ -61,40 +61,42 @@
         <div class="create_activities_form">
         	<div class="caf_item clfix">
         		<span class="cafi_title">活动名称：</span>
-        		<div class="cafi_ele"><input type="text" class="input28" placeholder="请输入活动名称" value=""></div>
+        		<div class="cafi_ele"><input type="text" id="activeName" class="input28" placeholder="请输入活动名称" value=""></div>
         	</div>
         	<div class="caf_item clfix">
-        		<span class="cafi_title">数据类型：</span>
-        		<div class="cafi_ele">
-        			<div id="pl_selected_box" class=" selectbox">
-                        <p class="seled" id="pl_selected" data-value="0">非订单相关</p>
-                        <span class="sanjiao_left"></span>
-                        <div id="pl_selected_list" class="selectlist">
-                            <p data-value="0">非订单相关</p>
-                            <p data-value="1">订单相关</p>
-                        </div>
-                    </div>
-        		</div>
+		    <span class="cafi_title">数据类型：</span>
+		    <div class="cafi_ele">
+			<div id="dataTypeBox" class="selectbox">
+			    <p class="seled" id="dataTyped" data-value="2">非订单相关</p>
+			    <span class="sanjiao_left"></span>
+			    <div id="dataTypeList" class="selectlist">
+				<p data-value="2">非订单相关</p>
+				<p data-value="1">订单相关</p>
+			    </div>
+			</div>
+		    </div>
         	</div>
         	<div class="caf_item clfix">
         		<span class="cafi_title">二维码推广信息：</span>
         		<div class="cafi_ele">
-        			<div id="orderProm" class="hide"><input type="text" class="input28" placeholder="请输入活动名称" value=""><em class="remind">（会员扫描二维后进入了解的信息页面，可以为店铺网址，商品网址，品牌资源网址等）</em></div>
-        			<div id="noOrderProm" class="">系统自助为每一个订单自动生成二维码；二维码通填写第三方订单打印软件直接打印在发货单或快递单；</div>
+        			<div id="noOrderProm" class="hide"><input type="text" class="input28" id="qrLink" placeholder="请输入网址" value=""><em class="remind">（会员扫描二维后进入了解的信息页面，可以为店铺网址，商品网址，品牌资源网址等）</em></div>
+        			<div id="orderProm" class="hide">系统自助为每一个订单自动生成二维码；二维码通填写第三方订单打印软件直接打印在发货单或快递单；</div>
         		</div>
         	</div>
         </div>
         <p class="pdtop10">
-	        <a class="bigbtn" href="/qrcode/create_rule.php">下一步</a>
+	        <a class="bigbtn" id="nextBtn">下一步</a>
 	    </p>
     </div>
     <!-- footer start -->
     <?php include("/../base/footer.php") ?>
     <!-- footer end -->
+    
+    <input type="hidden" name="" id="id" value="1" />
 </div>
-<input type="hidden" name="" id="id" value="<?php echo $id; ?>" />
-<input type="hidden" name="" id="type" value="<?php echo $type; ?>" />
+<script src="/public/js/qr/jquery.mockjax.js" type="text/javascript" charset="utf-8"></script>
+<script src="/public/js/qr/jquery.mockjson.js" type="text/javascript" charset="utf-8"></script>
+<script src="/public/js/qr/qrData.js"></script>
+<script src="/public/js/qr/qrActive.js"></script>
 </body>
-<script src="/public/js/interaction.js"></script>
-
 </html>

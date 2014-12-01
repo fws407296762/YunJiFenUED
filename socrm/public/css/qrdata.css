@@ -1,5 +1,15 @@
+#selecedRuleBox{padding-left: 10px;}
+.select-rule{vertical-align: -9px;}
+#bindRuleBtn,#cancleRuleBtn{vertical-align: 2px;margin-left: 5px;}
 #noOrderProm{line-height: 30px;}
 .caf_item{padding-left: 100px;line-height: 30px !important;margin-top: 10px;}
 .cafi_title{float: left;margin-left: -100px;}
 .create_box{border: 1px solid #ccc;padding: 10px;width: 800px;background: #fff;}
 .cfR-range{margin-top: 20px;}
+
+#noOrderQrcode{padding-left: 100px;overflow: hidden;}
+.qrcode-img{margin-left: -100px;}
+.qrcode-img img{width: 90px;height: 90px;}
+
+.qrcodeact-name{margin-bottom: 10px;}
+.qr-prom{margin-top: 10px;}
