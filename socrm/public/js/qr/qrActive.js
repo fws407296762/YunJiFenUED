@@ -6,25 +6,6 @@
 **/
 
 $(function(){
-    $.mockJSON.data.QRCODE_LINK = [
-		    'http://gtms02.alicdn.com/tps/i2/TB14ng8GFXXXXXJXFXXvKyzTVXX-520-280.jpg', 'http://i.mmcdn.cn/simba/img/TB1VQ9SGpXXXXcpaXXXSutbFXXX.jpg', 'http://i.mmcdn.cn/simba/img/TB1a504GFXXXXbMaXXXSutbFXXX.jpg', 'http://i.mmcdn.cn/simba/img/TB1V8I5GXXXXXcYXFXXSutbFXXX.jpg',''
-		];
-    //		规则详情
-		$.mockjax({
-			url: '/qrcode/qrDetail',
-			status:200,
-			responseTime:750,
-			responseText:$.mockJSON.generateFromTemplate({
-				code:0,
-				msg:'',
-                                data:{
-                                    title:"这是一个测试活动",
-                                    "qrcode_type|1-2":1,
-                                    "link":"@QRCODE_LINK"
-                                }
-			})
-				
-		})
    var id = parseInt($("#id").val(),10);
    if (id > 0) {
         QR.qrDetail({

@@ -153,6 +153,25 @@ var QR = {
 		});
 		return dtd;
 	},
+	createBasics:function(options){
+		var dtd = $.Deferred();
+		QR.ajax({
+			url:"/qrcode/createBasics",
+			data:options.data,
+			beforeSend:options.beforeSend
+		}).done(function(getdata){
+//			getdata = eval("("+getdata+")"),
+			var code = parseInt(getdata.code);
+			if(code){
+				dtd.reject(getdata.msg);
+				return false;
+			}
+			dtd.resolve();
+		}).fail(function(){
+			dtd.reject();
+		});
+		return dtd;
+	},
 	ajax:function(options){
 		var dtd = $.Deferred();
 		return $.ajax({

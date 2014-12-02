@@ -14,7 +14,8 @@
 			}
 		</script>
 		<script src="/public/js/base.js" type="text/javascript"></script>
-		<script src="/public/js/interaction_action.js" type="text/javascript"></script>
+		
+		<!--<script src="/public/js/interaction_action.js" type="text/javascript"></script>-->
 		<script type="text/javascript">
 			$(function() {
 				/*显示当前导航*/
@@ -68,8 +69,9 @@
 						<div class="cfR-range caf_item clfix hide">
 				        	<span class="cafi_title">奖励范围：</span>
 				        	<div class="cafi_ele">
-				        		<label class="mright10"><input type="checkbox" name="range" value="1" class="vermiddle mright5" id="extendsionCheck" />推广者 （即订单购买者）</label>
-				        		<label><input type="checkbox" name="range" value="2" class="vermiddle mright5" id="partCheck" />参与者 （即扫描者）</label>
+				        		<label class="mright10"><input val="2" type="checkbox" name="range" value="1" class="vermiddle mright5" id="extendsionCheck" />推广者 （即订单购买者）</label>
+				        		<label><input type="checkbox" val="1" name="range" value="2" class="vermiddle mright5" id="partCheck" />参与者 （即扫描者）</label>
+				        		<span id="rangeError"class="hide error">奖励范围必须选一个</span>
 				        	</div>
 				        </div>
 				        <!--范围选择结束-->
@@ -115,21 +117,21 @@
 									<div class="cbf_row">
 										<label class="cbf_row_title">首次互动：</label>
 										<div class="cbf_row_cont">
-											<input class="input28 w170" data-reg="num" type="text" name="" id="extension_first_score" />　积分
+											<input class="input28 w170" data-reg="ltzero" type="text" name="" id="extension_first_score" />　积分
 										</div>
 									</div>
 		
 									<div class="cbf_row">
 										<label class="cbf_row_title">连续每次增加：</label>
 										<div class="cbf_row_cont">
-											<input class="input28 w170" data-reg="num" type="text" name="" id="extension_add_score" />　积分
+											<input class="input28 w170" data-reg="ltzero" type="text" name="" id="extension_add_score" />　积分
 										</div>
 									</div>
 		
 									<div class="cbf_row">
 										<label class="cbf_row_title">最大连续次数：</label>
 										<div class="cbf_row_cont">
-											<input class="input28 w170" data-reg="num" type="text" name="" id="extension_max_add" />　次
+											<input class="input28 w170" data-reg="ltzero" type="text" name="" id="extension_max_add" />　次
 											<span class="remind">积分不再增加，继续连续签到当日领取签到积分与这日相同； （大于等于2的整数）</span>
 										</div>
 									</div>
@@ -139,19 +141,19 @@
 									<label class="cbf_row_title">赠送积分数：</label>
 									<div class="cbf_row_cont">
 										<input class="input28 w70" type="text" data-reg="num" name="" id="extension_rand_score_s" /> —
-										<input class="input28 w70" data-reg="num" type="text" name="" id="extension_rand_score_e" />　积分<em class="remind mleft10">每次随机赠送该范围内积分</em>
+										<input class="input28 w70" data-reg="ltzero" type="text" name="" id="extension_rand_score_e" />　积分<em class="remind mleft10">每次随机赠送该范围内积分</em>
 									</div>
 								</div>
 		
 								<div id='extension_fj_num_box' class="cbf_row fj_num_box hide">
 									<label class="cbf_row_title">积分数：</label>
 									<div class="cbf_row_cont">
-										<input class="input28 w70" data-reg="num" type="text" name="" id="extension_score" />　积分
+										<input class="input28 w70" data-reg="ltzero" type="text" name="" id="extension_score" />　积分
 									</div>
 								</div>
 								<div id="extensionProportionBox" class="cbf_row proportion_box hide">
 									<label for="" class="cbf_row_title">比例：</label>
-									<div class="cbf_row_cont"><input class="input28 w70" data-reg="num" type="text" name="" id="extension_proportion_val"></div>
+									<div class="cbf_row_cont"><input class="input28 w70" data-reg="nofloat" type="text" name="" id="extension_proportion_val"></div>
 								</div>
 								<div id="extensionIplimit" class="cbf_row iplimit_box hide">
 									<label class="cbf_row_title iplimit">IP限制：</label>
@@ -163,7 +165,6 @@
 								
 								<a class="normalbtn" id="extension_suer_btn">保存</a>
 								<em class="remind hide"><img src="/public/images/load20.gif" alt=""/>提交中...</em>
-								<em class="error hide">创建失败，请再试</em>
 							</div>
 						</div>
 						<!--推广者规则内容设置结束-->
@@ -213,21 +214,21 @@
 									<div class="cbf_row">
 										<label class="cbf_row_title">首次互动：</label>
 										<div class="cbf_row_cont">
-											<input class="input28 w170" data-reg="num" type="text" name="" id="part_first_score" />　积分
+											<input class="input28 w170" data-reg="ltzero" type="text" name="" id="part_first_score" />　积分
 										</div>
 									</div>
 		
 									<div class="cbf_row">
 										<label class="cbf_row_title">连续每次增加：</label>
 										<div class="cbf_row_cont">
-											<input class="input28 w170" data-reg="num" type="text" name="" id="part_add_score" />　积分
+											<input class="input28 w170" data-reg="ltzero" type="text" name="" id="part_add_score" />　积分
 										</div>
 									</div>
 		
 									<div class="cbf_row">
 										<label class="cbf_row_title">最大连续次数：</label>
 										<div class="cbf_row_cont">
-											<input class="input28 w170" data-reg="num" type="text" name="" id="part_max_add" />　次
+											<input class="input28 w170" data-reg="ltzero" type="text" name="" id="part_max_add" />　次
 											<span class="remind">积分不再增加，继续连续签到当日领取签到积分与这日相同； （大于等于2的整数）</span>
 										</div>
 									</div>
@@ -237,14 +238,14 @@
 									<label class="cbf_row_title">赠送积分数：</label>
 									<div class="cbf_row_cont">
 										<input class="input28 w70" type="text" data-reg="num" name="" id="part_rand_score_s" /> —
-										<input class="input28 w70" data-reg="num" type="text" name="" id="part_rand_score_e" />　积分<em class="remind mleft10">每次随机赠送该范围内积分</em>
+										<input class="input28 w70" data-reg="ltzero" type="text" name="" id="part_rand_score_e" />　积分<em class="remind mleft10">每次随机赠送该范围内积分</em>
 									</div>
 								</div>
 		
 								<div id="part_fj_num_box" class="cbf_row fj_num_box hide">
 									<label class="cbf_row_title">积分数：</label>
 									<div class="cbf_row_cont">
-										<input class="input28 w70" data-reg="num" type="text" name="" id="part_score" />　积分
+										<input class="input28 w70" data-reg="ltzero" type="text" name="" id="part_score" />　积分
 									</div>
 								</div>
 								<div id="partIplimit" class="cbf_row iplimit_box hide">
@@ -255,8 +256,7 @@
 									</div>
 								</div>
 								<a class="normalbtn" id="part_suer_btn">保存</a>
-								<em class="remind hide"><img src="/public/images/load20.gif" alt=""/>提交中...</em>
-								<em class="error hide">创建失败，请再试</em>
+								<em class="remind hide"><img src="/public/images/load20.gif" alt=""/>正在保存...</em>
 							</div>
 						</div>
 						<!--参与者规则设置结束-->
@@ -267,9 +267,9 @@
 					<div id="ruleBox">
 						<!--推广者规则内容展示开始-->
 						<div id="extensionRule" class="show_rule mtop20 hide">
-							<div class="rule_show"></div>
+							<div class="rule_show" id="extensionRuleShow"></div>
 							<div class="rule_show mtop20">
-								<ul class="rules_details_list"></ul>
+								<ul class="rules_details_list" id="extensiondetailsShow"></ul>
 							</div>
 							<p class="mtop20"><a class="smallbtn" id="extension_bind_rule">增加绑定个性化规则</a><span class="remind">（若条件符合，计算积分方式为叠加）</span>
 							</p>
@@ -278,9 +278,9 @@
 						
 						<!--参与者规则展示开始-->
 						<div id="partRule" class="show_rule mtop20 hide">
-							<div class="rule_show"></div>
+							<div class="rule_show" id="partRuleShow"></div>
 							<div class="rule_show mtop20">
-								<ul class="rules_details_list"></ul>
+								<ul class="rules_details_list" id="partdetailsShow"></ul>
 							</div>
 							<p class="mtop20"><a class="smallbtn" id="part_bind_rule">增加绑定个性化规则</a><span class="remind">（若条件符合，计算积分方式为叠加）</span>
 							</p>
@@ -345,7 +345,9 @@
 		<input type="hidden" id="interact_id" value="2" name="" />
 		<input type="hidden" id="operate_type" value="1" name="" />
 	</body>
-	<script src="/public/js/interaction.js"></script>
+	<script src="/public/js/qr/jquery.mockjax.js" type="text/javascript" charset="utf-8"></script>
+<script src="/public/js/qr/jquery.mockjson.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../public/js/interaction.js" type="text/javascript"></script>
 	<script src="/public/js/qr/qrData.js" type="text/javascript" charset="utf-8"></script>
 	<script src="/public/js/qr/qrRule.js" type="text/javascript" charset="utf-8"></script>
 </html>
