@@ -4,7 +4,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>异常监控-积分转账-SoCRM关系管理系统</title>
+		<title>规则设置-SoCRM关系管理系统</title>
 		<link href="/public/css/base.css" rel="stylesheet">
 		<link href="/public/css/qrdata.css" rel="stylesheet">
 		<!--    <script src="http://cdn.bootcss.com/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>-->
@@ -43,7 +43,7 @@
 			        .rb_list_box{padding: 10px; position: relative;}
 			        .rb_list_box div {line-height: 25px;}
 			        .rd_text {display: inline-block;margin-right: 20px;}
-			        .cancel_binding{ position: absolute; top: 10px; right: 10px;}
+			        .cancel_binding{margin-left: 10px;}
 		</style>
 	</head>
 
@@ -170,9 +170,9 @@
 						<!--推广者规则内容设置结束-->
 	
 						<!--参与者规则设置开始-->
-						<div id="partBox" class="hide">
+						<div id="partBox"  class="hide">
 							<div class="h2_box pdtop15 ">
-								<h2 id='partTitle'></h2>
+								<h2 class='partTitle'></h2>
 							</div>
 							<div id="partSet" class="create_box mtop20">
 								<div class="cbf_row">
@@ -267,7 +267,10 @@
 					<div id="ruleBox">
 						<!--推广者规则内容展示开始-->
 						<div id="extensionRule" class="show_rule mtop20 hide">
-							<div class="rule_show" id="extensionRuleShow"></div>
+							<div class="h2_box pdtop15">
+								<h2>推广者：积分奖励规则，二维码每被参与者有效扫描一次获得积分数；</h2>
+							</div>
+							<div class="rule_show" map_id="extendsionBox" id="extensionRuleShow"></div>
 							<div class="rule_show mtop20">
 								<ul class="rules_details_list" id="extensiondetailsShow"></ul>
 							</div>
@@ -277,8 +280,11 @@
 						<!--推广者规则内容展示结束-->
 						
 						<!--参与者规则展示开始-->
-						<div id="partRule" class="show_rule mtop20 hide">
-							<div class="rule_show" id="partRuleShow"></div>
+						<div id="partRule"  class="show_rule mtop20 hide">
+							<div class="h2_box pdtop15 ">
+								<h2 class='partTitle'></h2>
+							</div>
+							<div class="rule_show" map_id="partBox" id="partRuleShow"></div>
 							<div class="rule_show mtop20">
 								<ul class="rules_details_list" id="partdetailsShow"></ul>
 							</div>

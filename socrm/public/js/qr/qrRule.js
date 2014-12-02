@@ -31,7 +31,7 @@
 					msg:'',
 					data:{
 						title:"",
-						qrcode_type:2
+						qrcode_type:1
 					}
 				})
 			});
@@ -66,69 +66,40 @@
 				status:200,
 				responseTime:750,
 				responseText:$.mockJSON.generateFromTemplate({
-					"code" : 0,
-					"msg" : "",
-					"data" : {
-						"basics_rule" : {
-							"basics_id" : "18",
-							"basics_title" : "手机会员中心签到",
-							"frequency" : "3",
-							"days" : "0",
-							"score_type" : "3",
-							"score" : "10",
-							"rand_score_s" : "1",
-							"rand_score_e" : "1",
-							"add_score" : "5",
-							"max_add" : "10",
-							"ip_limit" : "0"
-						},
-						"specific_rule" : [{
-								"id" : "37",
-								"specific_title" : "吊死扶伤",
-								"valid_type" : "0",
-								"valid_sdate" : "2014-11-13 00:00:00",
-								"valid_edate" : "2014-11-13 00:00:00",
-								"happen_type" : "0",
-								"days" : "0",
-								"rule_type" : "2",
-								"badge_type" : "0",
-								"bind_time" : "2014-11-18 15:52:18",
-								"rule_value" : "10.00",
-								"badge_list" : []
-							}, {
-								"id" : "39",
-								"specific_title" : "wer",
-								"valid_type" : "0",
-								"valid_sdate" : "2014-11-18 00:00:00",
-								"valid_edate" : "2014-11-18 00:00:00",
-								"happen_type" : "0",
-								"days" : "0",
-								"rule_type" : "2",
-								"badge_type" : "1",
-								"bind_time" : "2014-11-18 15:53:37",
-								"rule_value" : "-1.00",
-								"badge_list" : [{
-										"badge_id" : "2",
-										"rule_value" : "11.00",
-										"badge_name" : "普通会员"
-									}, {
-										"badge_id" : "3",
-										"rule_value" : "22.00",
-										"badge_name" : "高级会员"
-									}, {
-										"badge_id" : "4",
-										"rule_value" : "33.00",
-										"badge_name" : "vip会员"
-									}, {
-										"badge_id" : "5",
-										"rule_value" : "44.00",
-										"badge_name" : "至尊VIP会员1"
-									}
-								]
-							}
-						]
-					}
-				})
+"code": 0,
+"msg": "",
+"data": {
+"basics_rule": {
+"basics_id": "24",
+"basics_title": "vrvr",
+"frequency": "0",
+"days": "0",
+"score_type": "1",
+"score": "12",
+"rand_score_s": "1991",
+"rand_score_e": "1991",
+"add_score": "0",
+"max_add": "0",
+"ip_limit": "0"
+},
+"specific_rule|2-5": [
+{
+"id|+1": 1,
+"specific_title": "@MALE_FIRST_NAME",
+"valid_type": "0",
+"valid_sdate": "@DATE_YYYY-@DATE_MM-@DATE_DD @TIME_HH:@TIME_MM:@TIME_SS",
+"valid_edate": "@DATE_YYYY-@DATE_MM-@DATE_DD @TIME_HH:@TIME_MM:@TIME_SS",
+"happen_type": "0",
+"days": "0",
+"rule_type": "1",
+"badge_type": "0",
+"bind_time": "@DATE_YYYY-@DATE_MM-@DATE_DD @TIME_HH:@TIME_MM:@TIME_SS",
+"rule_value": "0.12",
+"badge_list": []
+}
+]
+}
+})
 			});
 			//全局参数
 			var id = parseInt($("#id").val()),
@@ -165,7 +136,7 @@
 			function showRule(data){
 				$("#popbox").hide();
 				var qrcode_type = parseInt(data.qrcode_type,10);  //qrcode_type：二维码类型，1订单相关，2非订单相关
-				$("#partTitle").text(qrcode_type === 1 ? '参与者：积分奖励规则，扫描二维码获得积分数；同一ID多次扫描只计一次积分；' : '参与者（即扫描者）奖励积分规则');
+				$(".partTitle").text(qrcode_type === 1 ? '参与者：积分奖励规则，扫描二维码获得积分数；同一ID多次扫描只计一次积分；' : '参与者（即扫描者）奖励积分规则');
 				/***
 				 * 首先用qrcode_type判断类型：1订单相关、2非订单相关
 				 * 如果是订单相关，还需要判断3种情况：1、参与者；2、推广者；3参与者和推广者。这里还需要请求一遍qrDetail，type：请求类型，1获取活动基本信息，2活动规则详细信息
@@ -222,6 +193,14 @@
 							}
 						break;
 					}
+//						basics_title : $basics_title,
+//						pl : $pl,
+//						givetype_selected : $givetype_selected,
+//						score : $score,
+//						rand_score_s : $rand_score_s,
+//						rand_score_e : $rand_score_e,
+//						iplimit_input : $iplimit_input,
+//						proportion_val : $proportion_val
 					$part_suer_btn.on("click",function(){
 						var $this = $(this);
 						createBasic({
@@ -246,6 +225,10 @@
 						var $this = $(this);
 						createBasic({
 							$this:$this,
+							$createRuleBox:$("#extendsionBox"),
+							$showRuleBox:$("#extensionRule"),
+							$ruleShowBox:$("#extensionRuleShow"),
+							$detailsShowBox:$("#extensiondetailsShow"),
 							basics_title:$extension_basics_title,
 							frequency:$pl_extension_box,
 							score_type:$extension_givetype_selected,
@@ -304,7 +287,28 @@
 				}
 			});
 			
-			
+			$(".rules_details_list").on("click",".cancel_binding",function(){
+				var specific_id = $(this).attr("specific_id"),
+					basics_id = $(this).attr("basics_id"),
+					$this = $(this);
+				pop("取消后，新增的互动行为将不再按此规则赠送积分，已赠送积分的互动行为不受影响，是否取消？",2,function(){
+					var cur_p = parseInt($("#txtpage").val(),10)-1 || 0;
+					Interact.cancelRule({
+						data:{
+							specific_id:specific_id,
+							basics_id:basics_id
+						}
+					},function(){
+						$this.parsents("li").fadeOut("slow").delay(1000).remove();
+						var ulBox =  $this.parsents("ul");
+						var detailsLen = ulBox.find("li").length;
+						if(detailsLen === 0){
+							ulBox.html('<li style="text-align:center;background:#ccc;">暂无数据</li>')
+						}
+					});
+				});
+			});
+
 			function createBasic(options){
 				var scoreStatus = options.score && options.score.is(":visible"),
 					rand_score_sStatus = options.rand_score_s && options.rand_score_s.is(":visible"),
@@ -369,80 +373,44 @@
 						$error.removeClass("error").html(prom_html).show();
 					}
 				}).done(function(){
-//					$error.removeClass("error").html("创建成功").show();
-					$createRuleBox.fadeOut("slow").delay(1000).remove();
-					ruleDetail(basics_id,$showRuleBox,$ruleShowBox,$detailsShowBox);
+					$error.removeClass("error").html(prom_html).hide();
+					$createRuleBox.fadeOut("slow",function(){
+						$ruleShowBox.show();
+					});
+					ruleDetail({
+						basics_id:basics_id,
+						showRuleBox:$showRuleBox,
+						ruleShowBox:$ruleShowBox,
+						detailsShowBox:$detailsShowBox,
+						basics_title : options.basics_title,
+						frequency : options.frequency,
+						score_type : options.score_type,
+						score : options.score,
+						rand_score_s : options.rand_score_s,
+						rand_score_e : options.rand_score_e,
+						iplimit_input : options.iplimit_input,
+						proportion_val : options.proportion_val
+					});
 				}).fail(function(msg){
 					$error.addClass("error").html(msg || PROM_TEXT.server_fail).show();
 				});
 			}
-			$("#bind_rule").on("click", function() {
+			$(".rule_show").on("click",".editBtn",function(){
+				var parentEle = $(this).parent(),
+					mapEle = $("#"+parentEle.attr("map_id"));
+				parentEle.hide();
+				mapEle.show();
+			});
+
+			$("#part_bind_rule,#extension_bind_rule").on("click", function() {
 				$("#bind_rule_btn").attr("basics_id", $(this).attr("basics_id"));
 				$("#rule_des_btn").attr("basics_id", $(this).attr("basics_id"));
 				$("#bind_rule_box").show();
-//            	Interact.getBasicsRule({
-//                	url:'/interact/specificByBind',
-//                	element:$("#br_options")
-//            	});
+	           	Interact.getBasicsRule({
+	               	url:'/interact/specificByBind',
+	               	element:$("#br_options")
+	           	});
 			});
-//				$(".create_base_form").remove();
-//				$(".show_base").show("slow");
-				//      pop("正在加载数据...",0);
-				//      Interact.ruleDetail(3,{
-				//          type:1,
-				//          basics_id:basics_id
-				//      }).done(function(result,options){
-				//          var basics_rule = options.basicsResult
-				//          specific_html = options.specific_html;
-				//          var basics_html = '<a class="editBtn" href="/interact/addBasics?basics_id='+basics_id+'">编辑</a>';
-				//
-				//          basics_html += '<div class="cbf_row">';
-				//              basics_html += '<label class="cbf_row_title">基础规则名称：</label>';
-				//              basics_html += '<div class="cbf_row_cont edit_row_cont"></div>';
-				//          basics_html += '</div>';
-				//
-				//          basics_html += '<div class="cbf_row">';
-				//              basics_html += '<label class="cbf_row_title">频率：</label>';
-				//              basics_html += '<div class="cbf_row_cont edit_row_cont">每天</div>';
-				//          basics_html += '</div>';
-				//
-				//          basics_html += '<div class="cbf_row">';
-				//              basics_html += '<label class="cbf_row_title">赠送积分类型：</label>';
-				//          basics_html += '<div class="cbf_row_cont edit_row_cont">';
-				//
-				//          var limitText = '',randomStatus = 'hide',firstScore = '',firstText = '';
-				//          switch(parseInt(basics_rule.score_type)){
-				//              case 1:
-				//                  basics_html += '固定植';
-				//                  firstText = '赠送积分数';
-				//                  break;
-				//              case 2:
-				//                  basics_html += '随机';
-				//                  randomStatus = '';
-				//                  firstScore = 'hide';
-				//                  break;
-				//              case 3:
-				//                  basics_html += '递增';
-				//                  limitText += '<span class="rd_text"><strong>连续每次增加：</strong>'+basics_rule.add_score+'积分</span>';
-				//                  limitText += '<span class="rd_text"><strong>最大连续次数：</strong>'+(parseInt(basics_rule.max_add) || "不限制")+'</span>';
-				//                  firstText = '首次互动';
-				//                  break;
-				//          }
-				//          basics_html += '</div>';
-				//          basics_html += '</div>';
-				//
-				//          basics_html += '<div class="cbf_row '+randomStatus+'">';
-				//          basics_html += '<label class="cbf_row_title">随机起止值：</label>';
-				//          basics_html += '<div class="cbf_row_cont edit_row_cont">'+basics_rule.rand_score_s+'积分-'+basics_rule.rand_score_e+'积分</div>';
-				//          basics_html += '</div>';
-				//
-				//          basics_html += '<div class="cbf_row '+randomStatus+'">';
-				//          basics_html += '<label class="cbf_row_title">'+firstText+'：</label>';
-				//          basics_html += '<div class="cbf_row_cont edit_row_cont">'+basics_rule.score+'积分</div>';
-				//          basics_html += '</div>';
-				//          $(".rule_show").html(basics_html);
-				//          $(".rules_details_list").html(specific_html);
-				//      });
 			
 			function createRule(){
 				frequency({
@@ -469,50 +437,58 @@
 			}
 		});
 		
-		
-		function ruleDetail(basics_id,showRuleBox,ruleShowBox,detailsShowBox){
+		function ruleDetail(parms){
 			Interact.ruleDetail(3,{
 			  type:1,
-			  basics_id:basics_id
+			  basics_id:parms.basics_id
 			}).done(function(result,options){
 			  var basics_rule = options.basicsResult,
-				specific_html = options.specific_html;
-			  var basics_html = '<a class="editBtn" href="/interact/addBasics?basics_id='+basics_id+'">编辑</a>';
+				  specific_html = options.specific_html,
+				  basics_title = parms.basics_title,
+					frequency = parms.frequency,
+					score_type = parms.score_type,
+					score = parms.score,
+					rand_score_s = parms.rand_score_s,
+					rand_score_e= parms.rand_score_e,
+					iplimit_input = parms.iplimit_input,
+					proportion_val = parms.proportion_val;
+			  var basics_html = '<a class="editBtn">编辑</a>';
 			  basics_html += '<div class="cbf_row">';
 				  basics_html += '<label class="cbf_row_title">基础规则名称：</label>';
 				  basics_html += '<div class="cbf_row_cont edit_row_cont">'+basics_rule.basics_title+'</div>';
+				  basics_title.val(basics_rule.basics_title)
 			  basics_html += '</div>';
-			
 			  basics_html += '<div class="cbf_row">';
 				  basics_html += '<label class="cbf_row_title">频率：</label>';
-				  var frequency = '';
-				switch(parseInt(basics_rule.frequency)){
-                     case 0:
-                         frequency = '不限制';
-                     break;
-                     case 1:
-                         frequency = '仅一次';
-                     break;
-                     case 2:
-                         frequency = parseInt(basics_rule.days)+'天';
-                     break;
-                     case 3:
-                         frequency = '每天';
-                     break;
-                     case 4:
-                         frequency = '每周';
-                     break;
-                     case 5:
-                         frequency = '每月';
-                     break;
-                     case 6:
-                         frequency = '每季';
-                     break;
-                     case 7:
-                         frequency = '每年';
-                     break;
-                }
-				  basics_html += '<div class="cbf_row_cont edit_row_cont">'+frequency+'</div>';
+				  var frequency_html = '',rule_frequency = parseInt(basics_rule.frequency);
+					switch(rule_frequency){
+	                     case 0:
+	                         frequency_html = '不限制';
+	                     break;
+	                     case 1:
+	                         frequency_html = '仅一次';
+	                     break;
+	                     case 2:
+	                         frequency_html = parseInt(basics_rule.days)+'天';
+	                     break;
+	                     case 3:
+	                         frequency_html = '每天';
+	                     break;
+	                     case 4:
+	                         frequency_html = '每周';
+	                     break;
+	                     case 5:
+	                         frequency_html = '每月';
+	                     break;
+	                     case 6:
+	                         frequency_html = '每季';
+	                     break;
+	                     case 7:
+	                         frequency_html = '每年';
+	                     break;
+	                }
+					frequency.attr("data-value",rule_frequency).html(frequency_html);
+				  basics_html += '<div class="cbf_row_cont edit_row_cont">'+frequency_html+'</div>';
 			  basics_html += '</div>';
 			
 			  basics_html += '<div class="cbf_row">';
@@ -520,19 +496,23 @@
 			  basics_html += '<div class="cbf_row_cont edit_row_cont">';
 			
 			  var limitText = '',randomStatus = 'hide',firstScore = '',firstText = '';
-			  switch(parseInt(basics_rule.score_type)){
+			  var score_type_val = parseInt(basics_rule.score_type),
+			  	  score_type_html = ''
+			  switch(score_type_val){
 				  case 1:
 					  basics_html += '固定植';
 					  firstText = '赠送积分数';
+					  score_type_html = '固定植';
 					  break;
 				  case 2:
 					  basics_html += '随机';
 					  randomStatus = '';
 					  firstScore = 'hide';
+					  score_type_html = '随机';
 					  break;
 				  case 3:
 					  basics_html += '递增';
-					  
+					  score_type_html = '递增';
 						limitText += '<div class="cbf_row">';
 							limitText += '<label class="cbf_row_title">连续每次增加：：</label>';
 							limitText += '<div class="cbf_row_cont edit_row_cont">'+basics_rule.add_score+'积分</div>';
@@ -545,7 +525,11 @@
 						
 					  firstText = '首次互动';
 					 break;
+				case 4:
+					basics_html += '按比例';
+					score_type_html = '按比例';
 			  }
+			  score_type.attr("data-value",score_type_val).html(score_type_html);
 			  basics_html += '</div>';
 			  basics_html += '</div>';
 			
@@ -559,9 +543,9 @@
 			  basics_html += '<div class="cbf_row_cont edit_row_cont">'+basics_rule.score+'积分</div>';
 			  basics_html += '</div>';
 			  basics_html += limitText;
-			  showRuleBox.show();
-			  ruleShowBox.html(basics_html);
-			  detailsShowBox.html(specific_html);
+			  parms.showRuleBox.show();
+			  parms.ruleShowBox.html(basics_html);
+			  parms.detailsShowBox.html(specific_html);
 			});
 		
 		}
