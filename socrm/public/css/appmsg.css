@@ -1,0 +1,106 @@
+
+.dib{ display: inline-block;*display: inline;*zoom: 1;}
+.middle-inp{ width: 235px;}
+.error{ color: #f00;}
+.icon-wc-msgtype{ background: #90a928; color: #fff; padding:1px 3px 2px 5px;border-radius:3px;letter-spacing: 2px}
+.icon-wc-edit,.icon-wc-edit:hover,.icon-wc-delete,.icon-wc-delete:hover{ background: url(/public/images/weChat.png) no-repeat; display: inline-block;*display: inline;*zoom: 1;}
+.icon-wc-edit{ background-position: 0 0; width: 17px; height: 16px;}
+.icon-wc-delete{ background-position: -2px -23px; width: 13px; height: 16px;}
+.icon-wc-edit:hover{ background-position: -25px 0;}
+.icon-wc-delete:hover{ background-position: -25px -23px;}
+/*栏目导航*/
+.appmsg-box{ padding: 30px 10px;}
+.am-nav{ border-bottom: 1px solid #e0e0e0;}
+.am-nav a{display: inline-block;*display: inline;*zoom: 1; text-align: center; padding:5px 30px; color: #000; font-size: 14px;}
+.amn-cur{background: #e6e6e6;}
+
+/*新建图文类型*/
+.am-type-nav{ margin-top: 20px;}
+.am-type-nav a{ display: inline-block;*display: inline;*zoom: 1;border: 2px dotted #e6e6e6; padding: 20px;;font-size: 14px; color: #000; margin-right: 10px;}
+
+/*已创建表格*/
+.amt-title{ line-height: 30px;}
+.amtt-text{ font-size: 14px;}
+.amtl-title{ padding-left: 50px; position: relative;}
+.amtl-msgtype{position: absolute; left: 5px; top: 0px;}
+.amtl-title-multi .amtl-msgtype{ top: 3px;}
+.amtl-title p{ line-height: 23px;}
+.am-edit{ background-position: 0 2px;} .am-edit:hover{background-position: -25px 2px;}
+.am-delete{ background-position: 0 -21px;}.am-delete:hover{ background-position: -25px -21px;}
+.am-edit,.am-delete{ width: 20px; height: 20px; margin-left: 20px;}
+
+
+/*创建单条图文*/
+.js-appmsg-item{ padding:15px; position: relative;}
+.amb-main{ margin-top: 57px; overflow: hidden;}
+.ambm-preview{ border: 1px solid #e0e0e0; background: #fff; width: 320px;}
+.cover-appmsg{ position: relative;}
+.appmsg-title{ font-size: 14px;word-wrap: break-word;word-break: break-all;}
+.appmsg-thum{ text-align: center; height: 160px; line-height: 160px;background: #f0f0f0; color: #c0c0c0; font-size: 14px;}
+.appmsg-action{ padding: 23px 15px; border-top: 1px solid #e0e0e0;}
+.appmsg-action a{ color: #999;}
+.appmsg-add{ display: none;}
+.ambm-item{ border-top: 1px solid #e0e0e0; display: none;overflow: hidden;}
+.ambm-item .default-thumb{ background: #f0f0f0;color: #c0c0c0; width: 78px; height: 78px; line-height: 78px; text-align: center; margin-left: 14px; float: right;}
+/*内容编辑区域*/
+.ambc-edit{ background: #f4f5f9; width: 580px; padding-left: 20px; padding-right: 20px; padding-bottom: 20px; border: 1px solid #e7e7eb; margin-left: 30px; position: relative;}
+.edit-item{ margin-top: 30px;}
+.edit-item dt{ font-size: 14px;}
+.edit-item dd{ margin-top: 8px;}
+.edit-item dd input,.edit-item dd textarea{ width: 570px;}
+.ei-img-action{ line-height: 37px;}
+.ei-add-img{ border: 2px dashed #e7e7eb; padding: 8px 20px 7px; background: #fafafa; color: #999;}
+.ei-add-img:hover{ color: #666; text-decoration: none;}
+#deleteImg{ vertical-align: bottom; margin-left: 10px; font-size: 14px;}
+
+.eidt-show-text{ font-size: 14px;}
+.eidt-show{ width: 13px !important; vertical-align: -2px; *vertical-align: 0; margin-right: 10px;}
+.add-abstract{ font-size: 14px;}
+#description{ overflow-y: auto; border: 1px solid #ccc; padding: 5px 10px; width: 558px;}
+.limt-str-len{text-align: right;font-size: 14px;margin-top: 10px}
+#setLink{ font-size: 14px; text-decoration: none;}
+#linkBox{ display: none; margin-bottom: 10px;}
+.select-link-box{ display: none; width: 170px; position: absolute; border: 1px solid #e0e0e0; border-bottom: none; background: #fff;z-index: 1; bottom: 40px;}
+.select-link-box a{ display: block; border-bottom: 1px solid #e0e0e0; line-height: 30px; padding: 0 10px; color: #333;}
+.select-link-box a:hover{ background: #fefefe;}
+
+.arrow-box{position: absolute;width: 25px;height: 25px;left: -21px;top: 44px;}
+.arrow{position: absolute;}
+.arrow_out{display: inline-block;width: 0;height: 0;border-width: 20px;border-style: dashed;border-color: transparent;border-left-width: 0;border-right-color: #e7e7eb;border-right-style: solid;left: 0;}
+.arrow_in{display: inline-block;width: 0;height: 0;border-width: 20px;border-style: dashed;border-color: transparent;border-left-width: 0;border-right-color: #f4f5f9;border-right-style: solid;left: 1px;}
+.set-arrow{ display: inline-block; width: 0; height: 0; border-width: 6px;border-style: solid;border-color: transparent;border-top-width: 0;border-bottom-color: #b2b2b2;border-right-style: solid;}
+
+.whereLink{ overflow: hidden; padding-left: 50px;}
+#selectedLinkBox{ margin-bottom: 10px;}
+#selectedLink{ width: 517px;}
+.link-tip{ float: left; margin-left: -50px;}
+#links a{ margin-right: 10px;}
+#otherLinks{ color: #000;}
+#mobilePreview{ margin-left: 20px;}
+
+
+/*创建多条图文*/
+.multi .ambm-first{ position: relative;}
+.multi .ambm-first .appmsg-title{ position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; height: 30px; line-height: 30px; text-indent: 5px;background: rgba(0,0,0,0.6)!important;
+filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#99000000',endcolorstr = '#99000000'); color: #fff;}
+.multi .ambm-first .appmsg-date{ display: none;}
+.multi .ambm-first .appmsg-thum{ margin-top: 0;}
+.multi .ambm-item{ display: block;}
+.multi .ambm-item .appmsg-title{ margin-right: 92px; margin-top: 10px;}
+.multi .appmsg-read{ display: none;}
+.appmsg-action{ text-align: center;}
+.multi .appmsg-add{ display: inline; text-decoration: none;font-size: 14px;}
+.multi .appmsg-add:hover{ color: #666; }
+.multi .ama-read{ display: none;}
+.hover-appmsg-item .appmsg-edit-mask{ display: block;}
+.multi-edit .add-abstract{ display: none;}
+
+
+/*遮罩层*/
+.appmsg-edit-mask{ display: none; position: absolute; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; line-height: 160px;text-align: center; background: rgba(229,229,229,0.85)!important;
+*filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#d9e5e5e5',endcolorstr = '#d9e5e5e5');}
+.appmsg-edit-mask a{line-height: 100px; margin: 0 8px;overflow: hidden;}
+.ambm-item .appmsg-edit-mask{ line-height: 118px;}
+
+
+
