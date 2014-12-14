@@ -18,6 +18,7 @@ if(parseInt($.browser.version,10) === 9){
     }
 }
 var articleAry = []; //存放多条图文的数组
+var storageAry = [];
 //    编辑器配置
 
 window.editor = KindEditor.create('#content',{
@@ -40,7 +41,7 @@ editor.clickToolbar('image',function(){   //上传图片事件
     alert(12);
 });
  $(function(){
-
+    console.log(eval('('+$.LS.get('appmsg')+')'));
     $.mockJSON.data.CONTENT =[
         '今年12月13日是首个南京大屠杀死难者国家公祭日。当天上午，党和国家领导人将出席在侵华日军南京大屠杀遇难同胞纪念馆举行的国家公祭仪式。',
         '今天，我国首套南京大屠杀公祭全民读本在南京发布。读本包含日军书信、报告，西方中立人士的报道、证词等603条铁证，让南京大屠杀的历史事实不容否认。77年前惨绝人寰的南京大屠杀，30多万同胞惨遭杀戮，血与泪的历史不容遗忘！(央视记者周培培)',
@@ -171,6 +172,7 @@ function loadData(data){
     $(".ambc-edit").attr("data-id",id);
     $("#appmsgItem1").find('.appmsg-title').text(title);
     $("#appmsgItem1").find('.appmsg-thum').html('<img src="'+picurl+'" width="100%" height="100%">').addClass("has-thumb");
+    storageAry.push($("#appmsgItem1").data());
     updateData('appmsgItem1');
     fillData($("#appmsgItem1").data());
 }
@@ -252,8 +254,9 @@ function mutilSpace(data){
             article_type:mul_articles[i].article_type
         });
         articleAry.push($("#appmsgItem"+index).data());
+        storageAry.push($("#appmsgItem"+index).data());
     }
-
+    $.LS.set('appmsg',aryTostr(storageAry));
     //图文上显示编辑按钮
     $(".ambm-cont").on({
         "mouseenter":function(){
@@ -394,4 +397,18 @@ function fillData(options){
 //编辑数据，将数据存放到localStorage中
 function storageData(){
 
+}
+
+function aryTostr(ary){
+    var str = '[';
+    for(var i = 0;i<ary.length;i++){
+        var obj = ary[i],
+            objstr = "{";
+        for(var j in obj){
+            objstr += '\"'+j+'\"\:' +'\"'+obj[j]+'\"'+",";
+        }
+        str += objstr.substring(0,objstr.length-1)+'},';
+    }
+    str =  str.substring(0,str.length-1)+']';
+    return str;
 }
