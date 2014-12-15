@@ -104,3 +104,25 @@ filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=
 
 
 
+/*链接弹窗*/
+#image-text .pop, #vip-links .pop, #attr-keyword .pop {top: 180px;}
+
+/*相册*/
+#albumBox .pop{width:800px;height:434px;top:50%; left: 50%; margin-left: -400px; margin-top: -207px;}
+#albumBox .pop_hd{ border-bottom: none; height: 50px; line-height: 50px;}
+#albumBox .pop_hide{ top: 18px;}
+#albumBox .pop_title a{ position: relative;top:1px;color: #000; margin-right: 10px; display: inline-block;*display: inline;*zoom:1; height: 100%; line-height: 50px;}
+#albumBox .pop_title a:hover{ text-decoration: none;}
+.album-active{ background: url("/public/images/weChat/album_active.jpg") bottom center no-repeat;}
+
+.album-list{ overflow: hidden;}
+.album-list li{ position: relative;float: left; width: 118px; height: 150px; text-align: center; margin: 0px 17px;cursor: pointer;}
+.album-title{ display: block; height: 33px; line-height: 33px; }
+#albumBox .pop_text{ border-top: 1px solid #ccc; padding-top: 10px;}
+.album-thumb{ display: block; width: 117px; height: 117px; overflow: hidden;}
+.album-thumb img{ width: 100%; height: 100%;}
+.album-selected{ display: none;position: absolute; top: 0; left: 0; top: 0; width: 117px; height: 117px; line-height: 132px;background: rgba(0,0,0,0.5);;*filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#000000',endcolorstr = '#000000');}
+.icon-select{ display: inline-block; background: url(/public/images/weChat/album-selected.png); width: 45px; height: 31px;}
+
+.net-img-title{ font-size: 14px;}
+.net-img-box{ margin-top: 10px; margin-bottom: 10px;}

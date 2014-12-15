@@ -41,33 +41,27 @@
                 <a href="/weChat/createWcMsg.php">微信图文</a><a href="" class="amn-cur">高级图文</a>
             </div>
             <div class="amb-main">
-               <div class="ambm-preview fl">
-                   <div class="ambm-cont">
-                       <div class="js-appmsg-item ambm-first">
-                           <div class="cover-appmsg">
-                               <h4 class="appmsg-title">标题</h4>
-                               <p class="appmsg-date mtop5">2014/12/8</p>
-                               <div class="appmsg-thum mtop5">封面图片</div>
-                               <div class="appmsg-edit-mask">
-                                   <a onclick="return false;" class="icon-wc-edit" href="javascript:;">编辑</a>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="js-appmsg-item ambm-item">
-                           <i class="default-thumb">缩略图</i>
-                           <h4 class="appmsg-title">标题</h4>
-                           <div class="appmsg-edit-mask">
-                               <a onclick="return false;" class="icon-wc-edit" href="javascript:;">编辑</a>
-                               <a onclick="return false;" class="icon-wc-delete" href="javascript:;">删除</a>
-                           </div>
-                       </div>
-                   </div>
-                   <div class="appmsg-action">
-                       <a href="" class="ama-read">阅读全文</a>
-                       <a class="appmsg-add" id="appMsgAddBtn">+新增一条</a>
-                   </div>
-               </div>
-               <div class="ambc-eidt fl">
+
+                <div class="ambm-preview fl">
+                    <div class="ambm-cont">
+                        <div id="appmsgItem1" class="js-appmsg-item ambm-first">
+                            <div class="cover-appmsg">
+                                <h4 class="appmsg-title">标题</h4>
+                                <p class="appmsg-date mtop5">2014/12/8</p>
+                                <div class="appmsg-thum mtop5">封面图片</div>
+                                <div class="appmsg-edit-mask">
+                                    <a onclick="return false;" class="icon-wc-edit js-edit" data-id="1" href="javascript:;">编辑</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="appmsg-action">
+                        <a href="" class="ama-read">阅读全文</a>
+                        <a class="appmsg-add" id="appMsgAddBtn">+新增一条</a>
+                    </div>
+                </div>
+
+               <div class="ambc-edit multi-edit fl">
                    <span class="arrow-box">
                        <i class="arrow arrow_out"></i>
                        <i class="arrow arrow_in"></i>
@@ -75,29 +69,44 @@
 
                    <dl class="edit-item">
                        <dt>标题</dt>
-                       <dd><input class="input28" type="text" name="" id=""/></dd>
+                       <dd><input class="input28" type="text" name="" id="title"/></dd>
                    </dl>
                    <dl class="edit-item">
                        <dt>封面 <em class="remind">（大图片建议尺寸：900像素 * 500像素）</em></dt>
                        <dd>
-                           <div class="ei-img-action"><a class="ei-add-img" href="">+添加图片</a></div>
-                           <div class="edit-thumb hide"><img id="etImg" src="http://gtms02.alicdn.com/tps/i2/TB1FsYoGVXXXXaRXXXXvKyzTVXX-520-280.jpg" alt=""/><a
+                           <div class="ei-img-action">
+                           <span id="uploadBox" class="" >
+<!--                                <a href="javascript:;" class="ei-add-img" id="tipBtn">+添加图片</a>-->
+                                <span id="uploadBtn" >
+                                    <span id="upload_type1" class="upload_type" ><em id="spanButtonPlaceHolder"></em></span>
+                                </span>
+                                <img src="/public/images/load20.gif" style="display:none; margin:0px 0 0 30px;" id="upload_loadimg">
+                                <div id="divStatus" class="hide">0 个文件已上传</div>
+                           </span>
+                               <input id="btnCancel" type="hidden" value="取消所有上传" onclick="swfu.cancelQueue();" disabled="disabled" style="margin-left: 2px; font-size: 8pt; height: 29px;" />
+                           </div>
+
+
+                           <div class="edit-thumb hide"><img id="etImg" src="" alt=""/><a
                                    id="deleteImg">删除</a></div>
+                           <div class="edit-tips mtop20">
+                               <label for="editShow" class="eidt-show-text"><input type="checkbox" name="" id="picType" class="eidt-show"/>封面图片显示在正文中</label>
+                           </div>
                        </dd>
                    </dl>
-                   <dl class="edit-item">
-                       <dt>摘要</dt>
-                       <dd>
-                           <textarea name="" id="editAbstract" cols="30" rows="10"></textarea>
-                           <p>还可以输入 <em id="abstractNum">200</em> 字</p>
-                       </dd>
-                   </dl>
+<!--                   <dl class="edit-item">-->
+<!--                       <dt>摘要</dt>-->
+<!--                       <dd>-->
+<!--                           <textarea name="" id="description" cols="30" rows="10"></textarea>-->
+<!--                           <p class="limt-str-len des-num-box">还能输入<em id="descriptionNum">120</em>字</p>-->
+<!--                       </dd>-->
+<!--                   </dl>-->
                    <dl class="edit-item">
                        <dt></dt>
                        <dd class="whereLink">
                             <span class="link-tip">链接到：</span>
                            <div id="links">
-                               <p id="selectedLinkBox"><input type="text" class="input28" name="" id="selectedLink"/></p>
+                               <p id="selectedLinkBox" class="hide"><input type="text" class="input28" name="" id="selectedLink"/></p>
                                <a href="">自定义链接</a><a href="">VIP中心各类链接</a><a href="">品牌资讯</a>
                                <a id="otherLinks">其它<em class="set-arrow"></em></a>
                            </div>
@@ -113,6 +122,16 @@
     <?php include("/../base/footer.php") ?>
     <!-- footer end -->
 </div>
+<script charset="utf-8" src="/public/plugins/kindeditor-4.1.10/kindeditor-min.js"></script>
+<script charset="utf-8" src="/public/plugins/kindeditor-4.1.10/lang/zh_CN.js"></script>
+<script type="text/javascript" src="/public/plugins/SWFUpload/swfupload.js"></script>
+<script type="text/javascript" src="/public/plugins/SWFUpload/swfupload.queue.js"></script>
+<script type="text/javascript" src="/public/plugins/SWFUpload/fileprogress.js"></script>
+<script type="text/javascript" src="/public/plugins/SWFUpload/handlers.js"></script>
+<script src="/public/js/jquery.mockjson.js"></script>
+<script src="/public/js/storage.js"></script>
+<script src="/public/js/weChat/weChatMsg.js"></script>
+<script src="/public/js/weChat/weSeniorMsg.js"></script>
 <script>
     $(function(){
         autoImg({
